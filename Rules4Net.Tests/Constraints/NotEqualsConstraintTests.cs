@@ -11,21 +11,21 @@ using System.Text;
 namespace Rules4Net.Tests.Constraints
 {
     [TestClass]
-    public class EqualsConstraintTests
+    public class NotEqualsConstraintTests
     {
         [TestMethod]
-        public void ShouldBePossibleEvaluateRuleWithEqualsConstraint()
+        public void ShouldBePossibleEvaluateRuleWithNotEqualsConstraint()
         {
             var pool = MemoryPool.Default;
 
             var rule = new Rule();
             var filter = rule.AddAndFilter();
-            filter.Add(new EqualsConstraint("Name", "John Doe"));
+            filter.Add(new NotEqualsConstraint("Name", "John Doe"));
 
             pool.AddRule(rule);
 
             var data = new Dictionary<string, object>();
-            data["Name"] = "John Doe";
+            data["Name"] = "Fake User";
 
             var engine = new RuleEngine(pool);
 
@@ -37,18 +37,18 @@ namespace Rules4Net.Tests.Constraints
         }
 
         [TestMethod]
-        public void ShouldNotBePossibleEvaluateRuleWithEqualsConstraintAndNotEqualValue()
+        public void ShouldNotBePossibleEvaluateRuleWithNotEqualsConstraintAndEqualValue()
         {
             var pool = MemoryPool.Default;
 
             var rule = new Rule();
             var filter = rule.AddAndFilter();
-            filter.Add(new EqualsConstraint("Name", "John Doe"));
+            filter.Add(new NotEqualsConstraint("Name", "John Doe"));
 
             pool.AddRule(rule);
 
             var data = new Dictionary<string, object>();
-            data["Name"] = "Fake User";
+            data["Name"] = "John Doe";
 
             var engine = new RuleEngine(pool);
 
@@ -60,13 +60,13 @@ namespace Rules4Net.Tests.Constraints
         }
 
         [TestMethod]
-        public void ShouldNotBePossibleEvaluateRuleWithEqualsConstraintAndNullValue()
+        public void ShouldBePossibleEvaluateRuleWithNotEqualsConstraintAndNullValue()
         {
             var pool = MemoryPool.Default;
 
             var rule = new Rule();
             var filter = rule.AddAndFilter();
-            filter.Add(new EqualsConstraint("Name", "John Doe"));
+           filter.Add(new NotEqualsConstraint("Name", "John Doe"));
 
             pool.AddRule(rule);
 
@@ -77,9 +77,10 @@ namespace Rules4Net.Tests.Constraints
 
             var rules = engine.Evaluate(data);
 
-            Assert.AreEqual(0, rules.Count());
+            Assert.AreEqual(1, rules.Count());
 
             pool.Clear();
         }
     }
+
 }
