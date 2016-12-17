@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rules4Net", "Rules4Net\Rules4Net.csproj", "{0ADA9B14-C26C-4554-937F-110528AA3C7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rules4Net.Tests", "Rules4Net.Tests\Rules4Net.Tests.csproj", "{EDB4008A-94D8-46BB-910A-5945E00BAB94}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://jcodesistemas.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Rules4Net.Tests\\Rules4Net.Tests.csproj
+		SccProjectName1 = Rules4Net.Tests
+		SccLocalPath1 = Rules4Net.Tests
+		SccProjectUniqueName2 = Rules4Net\\Rules4Net.csproj
+		SccProjectName2 = Rules4Net
+		SccLocalPath2 = Rules4Net
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0ADA9B14-C26C-4554-937F-110528AA3C7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ADA9B14-C26C-4554-937F-110528AA3C7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ADA9B14-C26C-4554-937F-110528AA3C7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ADA9B14-C26C-4554-937F-110528AA3C7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDB4008A-94D8-46BB-910A-5945E00BAB94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDB4008A-94D8-46BB-910A-5945E00BAB94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDB4008A-94D8-46BB-910A-5945E00BAB94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDB4008A-94D8-46BB-910A-5945E00BAB94}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

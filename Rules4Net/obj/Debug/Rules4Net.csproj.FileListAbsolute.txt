@@ -1,0 +1,10 @@
+c:\users\apinto\documents\visual studio 2015\Projects\Rules4Net\Rules4Net\bin\Debug\Rules4Net.dll
+c:\users\apinto\documents\visual studio 2015\Projects\Rules4Net\Rules4Net\bin\Debug\Rules4Net.pdb
+c:\users\apinto\documents\visual studio 2015\Projects\Rules4Net\Rules4Net\obj\Debug\Rules4Net.csprojResolveAssemblyReference.cache
+c:\users\apinto\documents\visual studio 2015\Projects\Rules4Net\Rules4Net\obj\Debug\Rules4Net.dll
+c:\users\apinto\documents\visual studio 2015\Projects\Rules4Net\Rules4Net\obj\Debug\Rules4Net.pdb
+C:\Projects\Git\Rules4Net\Rules4Net\bin\Debug\Rules4Net.dll
+C:\Projects\Git\Rules4Net\Rules4Net\bin\Debug\Rules4Net.pdb
+C:\Projects\Git\Rules4Net\Rules4Net\obj\Debug\Rules4Net.csprojResolveAssemblyReference.cache
+C:\Projects\Git\Rules4Net\Rules4Net\obj\Debug\Rules4Net.dll
+C:\Projects\Git\Rules4Net\Rules4Net\obj\Debug\Rules4Net.pdb
