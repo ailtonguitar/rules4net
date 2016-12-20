@@ -1,17 +1,16 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Rules4Net.Data;
+﻿using Rules4Net.Data;
 using Rules4Net.Data.Constraints;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Xunit;
 
 namespace Rules4Net.Tests.Constraints
-{
-    [TestClass]
+{    
     public class StartsWithConstraintTests : TestBase
     {
-        [TestMethod]
+        [Fact]
         public void ShouldBePossibleEvaluateRuleWithStartsWithConstraint()
         {
             var rule = new Rule();
@@ -25,10 +24,10 @@ namespace Rules4Net.Tests.Constraints
                 Name = "John Doe"
             });
 
-            Assert.AreEqual(1, rules.Count());
+            Assert.Equal(1, rules.Count());
         }
 
-        [TestMethod]
+        [Fact]
         public void ShouldNotBePossibleEvaluateRuleWithStartsWithConstraintAndOtherStartSubstring()
         {
             var rule = new Rule();
@@ -42,7 +41,7 @@ namespace Rules4Net.Tests.Constraints
                 Name = "ohn"
             });
 
-            Assert.AreEqual(0, rules.Count());
+            Assert.Equal(0, rules.Count());
         }
     }
 }
