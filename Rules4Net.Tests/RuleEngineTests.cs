@@ -102,6 +102,6 @@ namespace Rules4Net.Tests
             this.Engine.EvaluateAndFire(data);
 
             Assert.AreEqual(true, data["Changed"]);
-        }
+        }        
     }
 }

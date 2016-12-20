@@ -18,6 +18,9 @@ namespace Rules4Net.Listener.Repository
 
         public static IRuleListener GetListener(string name)
         {
+            if (string.IsNullOrEmpty(name))
+                return null;
+
             var type = GetListenerType(name);
 
             if (type == null)

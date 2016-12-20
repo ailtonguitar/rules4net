@@ -18,7 +18,8 @@ namespace Rules4Net.Tests
         [TestInitialize]
         public void Init()
         {
-            this.Pool = MemoryRuleStore.Default;
+            //this.Pool = MemoryRuleStore.Default;
+            this.Pool = new MemoryRuleStore();
             this.Engine = new RuleEngine(this.Pool);
         }
 
