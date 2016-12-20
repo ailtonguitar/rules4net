@@ -11,13 +11,13 @@ namespace Rules4Net.Tests
 {
     public class TestBase
     {
-        private IRulesPool Pool { get; set; }
+        private IRuleStore Pool { get; set; }
         protected IRuleEngine Engine { get; set; }
 
         [TestInitialize]
         public void Init()
         {
-            this.Pool = MemoryPool.Default;
+            this.Pool = MemoryRuleStore.Default;
             this.Engine = new RuleEngine(this.Pool);
         }
 
