@@ -1,5 +1,6 @@
 ﻿using Rules4Net.Data;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace Rules4Net.Repository
     {
         private MemoryRuleStore() { }
 
-        private IList<IRule> _rules = new List<IRule>();
+        private ConcurrentBag<IRule> _rules = new ConcurrentBag<IRule>();
 
         public static IRuleStore Default = new MemoryRuleStore();
 
@@ -26,7 +27,10 @@ namespace Rules4Net.Repository
 
         public void Clear()
         {
-            this._rules.Clear();
+            IRule result = null;
+
+            while (!this._rules.IsEmpty)
+                this._rules.TryTake(out result);
         }
     }
 }
