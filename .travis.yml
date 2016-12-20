@@ -6,4 +6,4 @@ install:
   - nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner
 script:
    - xbuild /p:Configuration=Release Rules4Net.sln
-   - mono ./testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./Rules4Net.Tests/bin/Release/Rules4Net.Tests.dll.dll
+   - mono ./testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./Rules4Net.Tests/bin/Release/Rules4Net.Tests.dll
