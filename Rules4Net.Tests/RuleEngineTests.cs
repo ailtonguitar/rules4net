@@ -30,6 +30,22 @@ namespace Rules4Net.Tests
         }
 
         [TestMethod]
+        public void ShouldBePossibleEvaluateRuleWithDynamicData()
+        {
+            var rule = new Rule();
+            var filter = rule.AddAndFilter();
+            filter.Add(new EqualsConstraint("Name", "John Doe"));
+            this.AddRule(rule);
+
+            var rules = this.Engine.Evaluate(new
+            {
+                Name = "John Doe"
+            });
+
+            Assert.AreEqual(1, rules.Count());
+        }
+
+        [TestMethod]
         public void ShouldBePossibleEvaluateRuleWithAndClause()
         {
             var rule = new Rule();

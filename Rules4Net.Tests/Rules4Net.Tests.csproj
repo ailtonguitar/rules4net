@@ -55,6 +55,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Constraints\ContainsConstraintTests.cs" />
+    <Compile Include="Constraints\IsNotNullConstraintTests.cs" />
+    <Compile Include="Constraints\IsNullConstraintTests.cs" />
+    <Compile Include="Constraints\NotContainsConstraintTests.cs" />
     <Compile Include="Constraints\NotEqualsConstraintTests.cs" />
     <Compile Include="Constraints\EqualsConstraintTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

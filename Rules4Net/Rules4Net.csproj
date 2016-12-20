@@ -44,8 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Constraints\ContainsConstraint.cs" />
     <Compile Include="Data\Constraints\EqualsConstraint.cs" />
     <Compile Include="Data\Constraints\IConstraint.cs" />
+    <Compile Include="Data\Constraints\IsNotNullConstraint.cs" />
+    <Compile Include="Data\Constraints\IsNullConstraint.cs" />
+    <Compile Include="Data\Constraints\NotContainsConstraint.cs" />
     <Compile Include="Data\Constraints\NotEqualsConstraint.cs" />
     <Compile Include="Data\Filters\AndFilter.cs" />
     <Compile Include="Data\Filters\Filter.cs" />
@@ -54,9 +58,10 @@
     <Compile Include="Data\Rule.cs" />
     <Compile Include="Engine\RuleEngine.cs" />
     <Compile Include="Engine\IRuleEngine.cs" />
+    <Compile Include="Helpers\ObjectHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\IRulesPool.cs" />
-    <Compile Include="Repository\MemoryPool.cs" />
+    <Compile Include="Repository\IRulesStore.cs" />
+    <Compile Include="Repository\MemoryRuleStore.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

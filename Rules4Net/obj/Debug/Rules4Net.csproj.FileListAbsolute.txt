@@ -8,3 +8,8 @@ C:\Projects\Git\Rules4Net\Rules4Net\bin\Debug\Rules4Net.pdb
 C:\Projects\Git\Rules4Net\Rules4Net\obj\Debug\Rules4Net.csprojResolveAssemblyReference.cache
 C:\Projects\Git\Rules4Net\Rules4Net\obj\Debug\Rules4Net.dll
 C:\Projects\Git\Rules4Net\Rules4Net\obj\Debug\Rules4Net.pdb
+C:\Projetos\GIT\rules4net\Rules4Net\bin\Debug\Rules4Net.dll
+C:\Projetos\GIT\rules4net\Rules4Net\bin\Debug\Rules4Net.pdb
+C:\Projetos\GIT\rules4net\Rules4Net\obj\Debug\Rules4Net.dll
+C:\Projetos\GIT\rules4net\Rules4Net\obj\Debug\Rules4Net.pdb
+C:\Projetos\GIT\rules4net\Rules4Net\obj\Debug\Rules4Net.csprojResolveAssemblyReference.cache
