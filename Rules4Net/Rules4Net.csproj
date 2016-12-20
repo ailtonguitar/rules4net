@@ -52,6 +52,7 @@
     <Compile Include="Data\Constraints\IsNullConstraint.cs" />
     <Compile Include="Data\Constraints\NotContainsConstraint.cs" />
     <Compile Include="Data\Constraints\NotEqualsConstraint.cs" />
+    <Compile Include="Data\Constraints\StartsWithConstraint.cs" />
     <Compile Include="Data\Filters\AndFilter.cs" />
     <Compile Include="Data\Filters\Filter.cs" />
     <Compile Include="Data\Filters\OrFilter.cs" />
