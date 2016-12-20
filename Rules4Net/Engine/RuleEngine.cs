@@ -6,6 +6,8 @@ using Rules4Net.Data;
 using Rules4Net.Repository;
 using System.Reflection;
 using Rules4Net.Helpers;
+using Rules4Net.Listener;
+using Rules4Net.Listener.Repository;
 
 namespace Rules4Net.Engine
 {
@@ -26,6 +28,31 @@ namespace Rules4Net.Engine
         public IEnumerable<IRule> Evaluate(object data)
         {
             return this.Evaluate(ObjectHelper.ToDictionary(data));
+        }
+
+
+        public IEnumerable<IRule> EvaluateAndFire(object data)
+        {
+            var rules = this.Evaluate(data);
+            FireRulesEvent(data, rules);
+            return rules;
+        }
+
+        public IEnumerable<IRule> EvaluateAndFire(IDictionary<string, object> data)
+        {
+            var rules = this.Evaluate(data);
+            FireRulesEvent(data, rules);
+            return rules;
+        }
+
+        private void FireRulesEvent(object data, IEnumerable<IRule> rules)
+        {
+            foreach (var rule in rules)
+            {
+                var listener = ListenerRepository.GetListener(rule.Name);
+                if (listener != null)
+                    listener.Handle(data);
+            }
         }
     }
 }

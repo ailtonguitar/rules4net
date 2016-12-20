@@ -10,5 +10,7 @@ namespace Rules4Net.Engine
     {
         IEnumerable<IRule> Evaluate(IDictionary<string, object> data);
         IEnumerable<IRule> Evaluate(object data);
+        IEnumerable<IRule> EvaluateAndFire(IDictionary<string, object> data);
+        IEnumerable<IRule> EvaluateAndFire(object data);
     }
 }

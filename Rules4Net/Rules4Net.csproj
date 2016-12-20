@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Data\Constraints\ContainsConstraint.cs" />
     <Compile Include="Data\Constraints\EqualsConstraint.cs" />
+    <Compile Include="Data\Constraints\ExpressionConstraint.cs" />
     <Compile Include="Data\Constraints\IConstraint.cs" />
     <Compile Include="Data\Constraints\IsNotNullConstraint.cs" />
     <Compile Include="Data\Constraints\IsNullConstraint.cs" />
@@ -59,8 +60,11 @@
     <Compile Include="Engine\RuleEngine.cs" />
     <Compile Include="Engine\IRuleEngine.cs" />
     <Compile Include="Helpers\ObjectHelper.cs" />
+    <Compile Include="Listener\IRuleListener.cs" />
+    <Compile Include="Listener\RuleAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IRulesStore.cs" />
+    <Compile Include="Listener\Repository\ListenerRepository.cs" />
     <Compile Include="Repository\MemoryRuleStore.cs" />
   </ItemGroup>
   <ItemGroup />

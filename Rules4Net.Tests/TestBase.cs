@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rules4Net.Data;
 using Rules4Net.Engine;
+using Rules4Net.Listener;
 using Rules4Net.Repository;
 using System;
 using System.Collections.Generic;
@@ -37,4 +38,15 @@ namespace Rules4Net.Tests
             this.Pool.Clear();
         }
     }
+
+    [Rule("fake.rule")]
+    public class FakeRuleListener : IRuleListener
+    {
+        public void Handle(object data)
+        {
+            var dic = (IDictionary<string, object>)data;
+            dic["Changed"] = true;
+        }
+    }
+
 }
