@@ -17,7 +17,7 @@ namespace Rules4Net.Tests
         [TestMethod]
         public void ShouldBePossibleEvaluateRule()
         {
-            var rule = new Rule("MyRule");
+            var rule = new Rule();
             var filter = rule.AddAndFilter();
             filter.Add(new EqualsConstraint("Name", "John Doe"));
             this.AddRule(rule);
@@ -33,7 +33,7 @@ namespace Rules4Net.Tests
         [TestMethod]
         public void ShouldBePossibleEvaluateRuleWithDynamicData()
         {
-            var rule = new Rule("MyRule");
+            var rule = new Rule();
             var filter = rule.AddAndFilter();
             filter.Add(new EqualsConstraint("Name", "John Doe"));
             this.AddRule(rule);
@@ -49,7 +49,7 @@ namespace Rules4Net.Tests
         [TestMethod]
         public void ShouldBePossibleEvaluateRuleWithAndClause()
         {
-            var rule = new Rule("MyRule");
+            var rule = new Rule();
             var filter = rule.AddAndFilter();
             filter.Add(new EqualsConstraint("Name", "John Doe"));
             filter.Add(new EqualsConstraint("Email", "fake@fake.com"));
@@ -67,7 +67,7 @@ namespace Rules4Net.Tests
         [TestMethod]
         public void ShouldBePossibleEvaluateRuleWithOrClause()
         {
-            var rule = new Rule("MyRule");
+            var rule = new Rule();
             var filter = rule.AddOrFilter();
             filter.Add(new EqualsConstraint("Name", "John Doe"));
             filter.Add(new EqualsConstraint("Email", "fake@fake2.com"));
@@ -89,8 +89,26 @@ namespace Rules4Net.Tests
         {
             ListenerRepository.Register(typeof(RuleEngineTests));
 
-            var rule = new Rule("MyRule");
+            var rule = new Rule();
             rule.Name = "fake.rule";
+            var filter = rule.AddAndFilter();
+            filter.Add(new EqualsConstraint("Name", "John Doe"));
+
+            this.AddRule(rule);
+
+            var data = new Dictionary<string, object>();
+            data["Name"] = "John Doe";
+
+            this.Engine.EvaluateAndFire(data);
+
+            Assert.AreEqual(true, data["Changed"]);
+        }
+
+        [TestMethod]
+        public void ShouldBePossibleEvaluateRuleAndFireListener_WithEmptyName() {
+            ListenerRepository.Register(typeof(RuleEngineTests));
+
+            var rule = new Rule();            
             var filter = rule.AddAndFilter();
             filter.Add(new EqualsConstraint("Name", "John Doe"));
 

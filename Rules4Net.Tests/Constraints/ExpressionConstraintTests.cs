@@ -14,7 +14,7 @@ namespace Rules4Net.Tests.Constraints
         [TestMethod]
         public void ShouldBePossibleEvaluateRuleWithExpressionConstraint()
         {
-            var rule = new Rule("MyRule");
+            var rule = new Rule();
             var filter = rule.AddAndFilter();
 
             filter.Add(new ExpressionConstraint("Name", (o) => {

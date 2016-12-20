@@ -14,7 +14,7 @@ namespace Rules4Net.Tests.Constraints
         [TestMethod]
         public void ShouldBePossibleEvaluateRuleWithIsNullConstraint()
         {
-            var rule = new Rule("MyRule");
+            var rule = new Rule();
             var filter = rule.AddAndFilter();
             filter.Add(new IsNullConstraint("Name"));
 
@@ -31,7 +31,7 @@ namespace Rules4Net.Tests.Constraints
         [TestMethod]
         public void ShouldBePossibleEvaluateRuleWithIsNullConstraintWithNotPresentProperty()
         {
-            var rule = new Rule("MyRule");
+            var rule = new Rule();
             var filter = rule.AddAndFilter();
             filter.Add(new IsNullConstraint("Name"));
 

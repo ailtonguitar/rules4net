@@ -12,21 +12,17 @@ using System.Threading.Tasks;
 namespace TestApplication {
     class Program {
         static void Main(string[] args) {
-            Rule rule1 = new Rule("MyRule1");
+            Rule rule1 = new Rule();
             rule1.Add(new AndFilter(new List<IConstraint> {
-                new EqualsConstraint("name", "Joao Paulo"),
-                new EqualsConstraint("age", 17),
+                new EqualsConstraint("name", "Joao Paulo")
             }));
-            rule1.Add(new AndFilter(new List<IConstraint> {
-                new EqualsConstraint("name", "Joao Paulo"),
-                new EqualsConstraint("age", 17),
-            }));
-
+                       
             IRuleStore pool = new MemoryRuleStore(new[] { rule1 } );
             IRuleEngine engine = new RuleEngine(pool);
             var result = engine.Evaluate(new {
-                name = "Joao Paulo"
-            });
+                name = "Joao Paulo",
+                age = 17
+            }).ToList();
 
             Console.Read();
         }
