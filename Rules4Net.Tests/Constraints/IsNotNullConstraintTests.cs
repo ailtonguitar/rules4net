@@ -19,6 +19,7 @@ namespace Rules4Net.Tests.Constraints
 
             this.AddRule(rule);
 
+
             var rules = this.Engine.Evaluate(new
             {
                 Name = "John Doe"
