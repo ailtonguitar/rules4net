@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Rules4Net.Data;
+﻿using Rules4Net.Data;
 using Rules4Net.Engine;
 using Rules4Net.Listener;
 using Rules4Net.Repository;
@@ -15,20 +14,11 @@ namespace Rules4Net.Tests
         private IRuleStore Pool { get; set; }
         protected IRuleEngine Engine { get; set; }
 
-        [TestInitialize]
-        public void Init()
-        {
-            //this.Pool = MemoryRuleStore.Default;
+        public TestBase() {
             this.Pool = new MemoryRuleStore();
             this.Engine = new RuleEngine(this.Pool);
-        }
-
-        [TestCleanup]
-        public void End()
-        {
-            this.Clear();
-        }
-
+        }        
+        
         protected void AddRule(IRule rule)
         {
             this.Pool.AddRule(rule);

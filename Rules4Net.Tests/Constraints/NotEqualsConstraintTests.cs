@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Rules4Net.Data;
+﻿using Rules4Net.Data;
 using Rules4Net.Data.Constraints;
 using Rules4Net.Engine;
 using Rules4Net.Repository;
@@ -7,13 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Xunit;
 
 namespace Rules4Net.Tests.Constraints
-{
-    [TestClass]
+{    
     public class NotEqualsConstraintTests : TestBase
     {
-        [TestMethod]
+        [Fact]
         public void ShouldBePossibleEvaluateRuleWithNotEqualsConstraint()
         {
             var rule = new Rule();
@@ -26,10 +25,10 @@ namespace Rules4Net.Tests.Constraints
 
             var rules = this.Engine.Evaluate(data);
 
-            Assert.AreEqual(1, rules.Count());
+            Assert.Equal(1, rules.Count());
         }
 
-        [TestMethod]
+        [Fact]
         public void ShouldNotBePossibleEvaluateRuleWithNotEqualsConstraintAndEqualValue()
         {
             var rule = new Rule();
@@ -43,10 +42,10 @@ namespace Rules4Net.Tests.Constraints
 
             var rules = this.Engine.Evaluate(data);
 
-            Assert.AreEqual(0, rules.Count());
+            Assert.Equal(0, rules.Count());
         }
 
-        [TestMethod]
+        [Fact]
         public void ShouldBePossibleEvaluateRuleWithNotEqualsConstraintAndNullValue()
         {
             var rule = new Rule();
@@ -60,7 +59,7 @@ namespace Rules4Net.Tests.Constraints
 
             var rules = this.Engine.Evaluate(data);
 
-            Assert.AreEqual(1, rules.Count());
+            Assert.Equal(1, rules.Count());
         }
     }
 

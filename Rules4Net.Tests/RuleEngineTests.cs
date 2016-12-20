@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Rules4Net.Data;
+﻿using Rules4Net.Data;
 using Rules4Net.Data.Constraints;
 using Rules4Net.Engine;
 using Rules4Net.Listener.Repository;
@@ -8,13 +7,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Xunit;
 
 namespace Rules4Net.Tests
-{
-    [TestClass]
+{    
     public class RuleEngineTests : TestBase
-    {
-        [TestMethod]
+    {        
+        [Fact]
         public void ShouldBePossibleEvaluateRule()
         {
             var rule = new Rule();
@@ -27,10 +26,10 @@ namespace Rules4Net.Tests
 
             var rules = this.Engine.Evaluate(data);
 
-            Assert.AreEqual(1, rules.Count());
+            Assert.Equal(1, rules.Count());
         }
 
-        [TestMethod]
+        [Fact]
         public void ShouldBePossibleEvaluateRuleWithDynamicData()
         {
             var rule = new Rule();
@@ -43,10 +42,10 @@ namespace Rules4Net.Tests
                 Name = "John Doe"
             });
 
-            Assert.AreEqual(1, rules.Count());
+            Assert.Equal(1, rules.Count());
         }
 
-        [TestMethod]
+        [Fact]
         public void ShouldBePossibleEvaluateRuleWithAndClause()
         {
             var rule = new Rule();
@@ -61,10 +60,10 @@ namespace Rules4Net.Tests
 
             var rules = this.Engine.Evaluate(data);
 
-            Assert.AreEqual(1, rules.Count());
+            Assert.Equal(1, rules.Count());
         }
 
-        [TestMethod]
+        [Fact]
         public void ShouldBePossibleEvaluateRuleWithOrClause()
         {
             var rule = new Rule();
@@ -80,11 +79,11 @@ namespace Rules4Net.Tests
 
             var rules = this.Engine.Evaluate(data);
 
-            Assert.AreEqual(1, rules.Count());
+            Assert.Equal(1, rules.Count());
         }
 
 
-        [TestMethod]
+        [Fact]
         public void ShouldBePossibleEvaluateRuleAndFireListener()
         {
             ListenerRepository.Register(typeof(RuleEngineTests));
@@ -101,7 +100,7 @@ namespace Rules4Net.Tests
 
             this.Engine.EvaluateAndFire(data);
 
-            Assert.AreEqual(true, data["Changed"]);
+            Assert.Equal(true, data["Changed"]);
         }        
     }
 }
