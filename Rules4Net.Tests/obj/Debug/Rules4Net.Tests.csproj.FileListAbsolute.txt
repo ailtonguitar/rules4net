@@ -20,3 +20,10 @@ C:\Users\Ailto\rules4net\Rules4Net.Tests\bin\Debug\Rules4Net.pdb
 C:\Users\Ailto\rules4net\Rules4Net.Tests\obj\Debug\Rules4Net.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Ailto\rules4net\Rules4Net.Tests\obj\Debug\Rules4Net.Tests.dll
 C:\Users\Ailto\rules4net\Rules4Net.Tests\obj\Debug\Rules4Net.Tests.pdb
+C:\Projetos\GIT\rules4net\Rules4Net.Tests\bin\Debug\Rules4Net.Tests.dll
+C:\Projetos\GIT\rules4net\Rules4Net.Tests\bin\Debug\Rules4Net.Tests.pdb
+C:\Projetos\GIT\rules4net\Rules4Net.Tests\bin\Debug\Rules4Net.dll
+C:\Projetos\GIT\rules4net\Rules4Net.Tests\bin\Debug\Rules4Net.pdb
+C:\Projetos\GIT\rules4net\Rules4Net.Tests\obj\Debug\Rules4Net.Tests.csprojResolveAssemblyReference.cache
+C:\Projetos\GIT\rules4net\Rules4Net.Tests\obj\Debug\Rules4Net.Tests.dll
+C:\Projetos\GIT\rules4net\Rules4Net.Tests\obj\Debug\Rules4Net.Tests.pdb

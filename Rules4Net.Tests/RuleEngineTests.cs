@@ -11,79 +11,59 @@ using System.Text;
 namespace Rules4Net.Tests
 {
     [TestClass]
-    public class RuleEngineTests
+    public class RuleEngineTests : TestBase
     {
         [TestMethod]
         public void ShouldBePossibleEvaluateRule()
         {
-            var pool = MemoryPool.Default;
-
             var rule = new Rule();
             var filter = rule.AddAndFilter();
             filter.Add(new EqualsConstraint("Name", "John Doe"));
-
-            pool.AddRule(rule);
+            this.AddRule(rule);
 
             var data = new Dictionary<string, object>();
             data["Name"] = "John Doe";
 
-            var engine = new RuleEngine(pool);
-
-            var rules = engine.Evaluate(data);
+            var rules = this.Engine.Evaluate(data);
 
             Assert.AreEqual(1, rules.Count());
-
-            pool.Clear();
         }
 
         [TestMethod]
         public void ShouldBePossibleEvaluateRuleWithAndClause()
         {
-            var pool = MemoryPool.Default;
-
             var rule = new Rule();
             var filter = rule.AddAndFilter();
             filter.Add(new EqualsConstraint("Name", "John Doe"));
             filter.Add(new EqualsConstraint("Email", "fake@fake.com"));
-
-            pool.AddRule(rule);
+            this.AddRule(rule);
 
             var data = new Dictionary<string, object>();
             data["Name"] = "John Doe";
             data["Email"] = "fake@fake.com";
 
-            var engine = new RuleEngine(pool);
-
-            var rules = engine.Evaluate(data);
+            var rules = this.Engine.Evaluate(data);
 
             Assert.AreEqual(1, rules.Count());
-
-            pool.Clear();
         }
 
         [TestMethod]
         public void ShouldBePossibleEvaluateRuleWithOrClause()
         {
-            var pool = MemoryPool.Default;
-
             var rule = new Rule();
             var filter = rule.AddOrFilter();
             filter.Add(new EqualsConstraint("Name", "John Doe"));
             filter.Add(new EqualsConstraint("Email", "fake@fake2.com"));
 
-            pool.AddRule(rule);
+            this.AddRule(rule);
 
             var data = new Dictionary<string, object>();
             data["Name"] = "John Doe";
             data["Email"] = "fake@fake.com";
 
-            var engine = new RuleEngine(pool);
-
-            var rules = engine.Evaluate(data);
+            var rules = this.Engine.Evaluate(data);
 
             Assert.AreEqual(1, rules.Count());
-
-            pool.Clear();
         }
     }
 }
