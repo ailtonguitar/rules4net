@@ -1,17 +1,16 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Rules4Net.Data;
+﻿using Rules4Net.Data;
 using Rules4Net.Data.Constraints;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Xunit;
 
 namespace Rules4Net.Tests.Constraints
-{
-    [TestClass]
+{    
     public class IsNullConstraintTests : TestBase
     {
-        [TestMethod]
+        [Fact]
         public void ShouldBePossibleEvaluateRuleWithIsNullConstraint()
         {
             var rule = new Rule();
@@ -25,10 +24,10 @@ namespace Rules4Net.Tests.Constraints
                 Name = (string)null
             });
 
-            Assert.AreEqual(1, rules.Count());
+            Assert.Equal(1, rules.Count());
         }
 
-        [TestMethod]
+        [Fact]
         public void ShouldBePossibleEvaluateRuleWithIsNullConstraintWithNotPresentProperty()
         {
             var rule = new Rule();
@@ -39,7 +38,7 @@ namespace Rules4Net.Tests.Constraints
 
             var rules = this.Engine.Evaluate(new { });
 
-            Assert.AreEqual(1, rules.Count());
+            Assert.Equal(1, rules.Count());
         }
 
     }
