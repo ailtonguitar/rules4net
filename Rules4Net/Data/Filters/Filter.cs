@@ -8,18 +8,32 @@ namespace Rules4Net.Data
 {
     public abstract class Filter
     {
-        protected Filter(IRule rule)
-        {
-            this.Rule = rule;
+        protected Filter() {            
             this.Constraints = new List<IConstraint>();
         }
 
-        public IRule Rule { get; internal set; }
-        public IList<IConstraint> Constraints { get; set; }
+        protected Filter(IEnumerable<IConstraint> constraints) : this() {
+            this.Constraints = constraints;
+        }
 
-        public Filter Add(IConstraint constraint)
-        {
-            this.Constraints.Add(constraint);
+        protected Filter(IRule rule, IEnumerable<IConstraint> constraints) : this(rule) {
+            this.Constraints = constraints;
+        }
+
+        protected Filter(IRule rule) : this() {
+            this.Rule = rule;
+        }
+
+        public IRule Rule { get; internal set; }
+        public IEnumerable<IConstraint> Constraints { get; set; }
+
+        /// <summary>
+        /// Create a new IEnumerable of constraints every time to avoid concurrence problems. Initialize it via constructor should be the prefered way.
+        /// </summary>
+        /// <param name="constraint"></param>
+        /// <returns></returns>
+        public Filter Add(IConstraint constraint) {
+            this.Constraints = this.Constraints.Concat(new[] { constraint });
             return this;
         }
 

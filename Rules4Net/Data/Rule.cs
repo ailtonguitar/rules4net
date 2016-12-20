@@ -8,7 +8,7 @@ namespace Rules4Net.Data
 {
     public class Rule : IRule
     {
-        public Rule()
+        public Rule(string name)
         {
             this.Filters = new List<Filter>();
         }

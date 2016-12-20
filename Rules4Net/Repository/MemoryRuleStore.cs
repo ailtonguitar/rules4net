@@ -1,26 +1,29 @@
 ﻿using Rules4Net.Data;
-using System;
+using Rules4Net.Helpers;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace Rules4Net.Repository
-{
+namespace Rules4Net.Repository {
     public class MemoryRuleStore : IRuleStore
     {
-        private MemoryRuleStore() { }
+        private ConcurrentBag<IRule> _rules = new ConcurrentBag<IRule>();        
 
-        private ConcurrentBag<IRule> _rules = new ConcurrentBag<IRule>();
-
-        public static IRuleStore Default = new MemoryRuleStore();
-
-        public void AddRule(Data.IRule rule)
-        {
-            this._rules.Add(rule);
+        public MemoryRuleStore(IEnumerable<IRule> rules) {
+            _rules.AddRange(rules);
         }
 
-        public IEnumerable<Data.IRule> Get()
+        public MemoryRuleStore() { }
+
+        public void AddRule(IRule rule)
+        {
+            _rules.Add(rule);
+        }
+
+        public void AddRule(IEnumerable<IRule> rules) {
+            _rules.AddRange(rules);
+        }
+
+        public IEnumerable<IRule> Get()
         {
             return this._rules;
         }

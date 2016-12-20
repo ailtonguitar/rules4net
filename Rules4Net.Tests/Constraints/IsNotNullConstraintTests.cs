@@ -14,7 +14,7 @@ namespace Rules4Net.Tests.Constraints
         [TestMethod]
         public void ShouldBePossibleEvaluateRuleWithIsNotNullConstraint()
         {
-            var rule = new Rule();
+            var rule = new Rule("MyRule");
             var filter = rule.AddAndFilter();
             filter.Add(new IsNotNullConstraint("Name"));
 

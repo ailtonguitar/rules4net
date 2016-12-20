@@ -16,7 +16,7 @@ namespace Rules4Net.Tests.Constraints
         [TestMethod]
         public void ShouldBePossibleEvaluateRuleWithEqualsConstraint()
         {
-            var rule = new Rule();
+            var rule = new Rule("MyRule");
             var filter = rule.AddAndFilter();
             filter.Add(new EqualsConstraint("Name", "John Doe"));
 
@@ -33,7 +33,7 @@ namespace Rules4Net.Tests.Constraints
         [TestMethod]
         public void ShouldNotBePossibleEvaluateRuleWithEqualsConstraintAndNotEqualValue()
         {
-            var rule = new Rule();
+            var rule = new Rule("MyRule");
             var filter = rule.AddAndFilter();
             filter.Add(new EqualsConstraint("Name", "John Doe"));
             this.AddRule(rule);
@@ -49,7 +49,7 @@ namespace Rules4Net.Tests.Constraints
         [TestMethod]
         public void ShouldNotBePossibleEvaluateRuleWithEqualsConstraintAndNullValue()
         {
-            var rule = new Rule();
+            var rule = new Rule("MyRule");
             var filter = rule.AddAndFilter();
             filter.Add(new EqualsConstraint("Name", "John Doe"));
             this.AddRule(rule);

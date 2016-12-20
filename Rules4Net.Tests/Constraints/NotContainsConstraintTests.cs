@@ -14,7 +14,7 @@ namespace Rules4Net.Tests.Constraints
         [TestMethod]
         public void ShouldBePossibleEvaluateRuleWithNotContainsConstraint()
         {
-            var rule = new Rule();
+            var rule = new Rule("MyRule");
             var filter = rule.AddAndFilter();
             filter.Add(new NotContainsConstraint("Name", "John"));
 
@@ -31,7 +31,7 @@ namespace Rules4Net.Tests.Constraints
         [TestMethod]
         public void ShouldNotBePossibleEvaluateRuleWithNotContainsConstraintAndContainsValue()
         {
-            var rule = new Rule();
+            var rule = new Rule("MyRule");
             var filter = rule.AddAndFilter();
             filter.Add(new NotContainsConstraint("Name", "John"));
             this.AddRule(rule);
