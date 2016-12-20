@@ -102,24 +102,6 @@ namespace Rules4Net.Tests
             this.Engine.EvaluateAndFire(data);
 
             Assert.AreEqual(true, data["Changed"]);
-        }
-
-        [TestMethod]
-        public void ShouldBePossibleEvaluateRuleAndFireListener_WithEmptyName() {
-            ListenerRepository.Register(typeof(RuleEngineTests));
-
-            var rule = new Rule();            
-            var filter = rule.AddAndFilter();
-            filter.Add(new EqualsConstraint("Name", "John Doe"));
-
-            this.AddRule(rule);
-
-            var data = new Dictionary<string, object>();
-            data["Name"] = "John Doe";
-
-            this.Engine.EvaluateAndFire(data);
-
-            Assert.AreEqual(true, data["Changed"]);
-        }
+        }        
     }
 }
