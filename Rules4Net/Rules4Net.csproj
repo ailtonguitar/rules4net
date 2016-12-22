@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Constraints\ContainsConstraint.cs" />
+    <Compile Include="Data\Constraints\EndsWithConstraint.cs" />
     <Compile Include="Data\Constraints\EqualsConstraint.cs" />
     <Compile Include="Data\Constraints\ExpressionConstraint.cs" />
     <Compile Include="Data\Constraints\IConstraint.cs" />
