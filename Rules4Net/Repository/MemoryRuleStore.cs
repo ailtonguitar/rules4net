@@ -1,5 +1,5 @@
 ﻿using Rules4Net.Data;
-using Rules4Net.Helpers;
+using Rules4Net.Extensions;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 
