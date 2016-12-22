@@ -56,5 +56,14 @@ namespace Rules4Net.Tests.Constraints
 
             Assert.False(result);
         }
+
+        [Fact]
+        public void ShouldNotBePossibleEvaluateRuleWithEndsWithConstraintAndMissingProperty()
+        {
+            var constraint = new EndsWithConstraint("Name", "John");
+            var result = constraint.Evaluate(ObjectHelper.ToDictionary(new { }));
+
+            Assert.False(result);
+        }
     }
 }

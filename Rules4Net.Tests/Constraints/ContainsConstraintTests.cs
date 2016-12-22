@@ -54,5 +54,15 @@ namespace Rules4Net.Tests.Constraints
 
             Assert.False(result);
         }
+
+        [Fact]
+        public void ShouldNotBePossibleEvaluateRuleWithContainsConstraintAndMissingProperty()
+        {
+            var data = new Dictionary<string, object>();
+            var contains = new ContainsConstraint("Name", "John");
+            var result = contains.Evaluate(data);
+
+            Assert.False(result);
+        }
     }
 }

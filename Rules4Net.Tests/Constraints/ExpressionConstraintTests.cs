@@ -1,5 +1,6 @@
 ﻿using Rules4Net.Data;
 using Rules4Net.Data.Constraints;
+using Rules4Net.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Text;
 using Xunit;
 
 namespace Rules4Net.Tests.Constraints
-{    
+{
     public class ExpressionConstraintTests : TestBase
     {
         [Fact]
@@ -16,7 +17,8 @@ namespace Rules4Net.Tests.Constraints
             var rule = new Rule();
             var filter = rule.AddAndFilter();
 
-            filter.Add(new ExpressionConstraint("Name", (o) => {
+            filter.Add(new ExpressionConstraint("Name", (o) =>
+            {
                 return o.ToString().Length > 5;
             }));
 
@@ -30,9 +32,21 @@ namespace Rules4Net.Tests.Constraints
             Assert.Equal(1, rules.Count());
 
             data["Name"] = "Jane";
-            
+
             rules = this.Engine.Evaluate(data);
             Assert.Equal(0, rules.Count());
+        }
+
+        [Fact]
+        public void ShouldNotBePossibleEvaluateRuleWithExpressionConstraintAndMissingProperty()
+        {
+            var constraint = new ExpressionConstraint("Name", (o) =>
+            {
+                return o != null && o.ToString().Length > 5;
+            });
+
+            var result = constraint.Evaluate(ObjectHelper.ToDictionary(new { }));
+            Assert.False(result);
         }
     }
 }

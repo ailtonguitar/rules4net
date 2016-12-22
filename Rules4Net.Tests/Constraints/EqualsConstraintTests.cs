@@ -1,13 +1,16 @@
 ﻿using Rules4Net.Data;
 using Rules4Net.Data.Constraints;
+using Rules4Net.Helpers;
 using Rules4Net.Tests.TestObjects.Financial;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace Rules4Net.Tests.Constraints {
-    public class EqualsConstraintTests : TestBase {
+namespace Rules4Net.Tests.Constraints
+{
+    public class EqualsConstraintTests : TestBase
+    {
         [Fact]
         public void ShouldNotBePossibleEvaluateRuleWithEqualsConstraintAndNotEqualValue()
         {
@@ -41,25 +44,28 @@ namespace Rules4Net.Tests.Constraints {
         }
 
         [Fact]
-        public void ShouldEvaluateBoolValue() {
-            var fakeData = new Dictionary<string, object>() { { "myProperty", true  } };
+        public void ShouldEvaluateBoolValue()
+        {
+            var fakeData = new Dictionary<string, object>() { { "myProperty", true } };
             var sut = new EqualsConstraint("myProperty", true);
-            
+
             var result = sut.Evaluate(fakeData);
             Assert.True(result);
         }
 
         [Fact]
-        public void ShouldEvaluatePrimitiveInteger() {            
+        public void ShouldEvaluatePrimitiveInteger()
+        {
             var fakeData = new Dictionary<string, object>() { { "myProperty", 18 } };
             var sut = new EqualsConstraint("myProperty", 18);
-            
+
             var result = sut.Evaluate(fakeData);
             Assert.True(result);
         }
 
         [Fact]
-        public void ShouldEvaluateDecimalValue() {
+        public void ShouldEvaluateDecimalValue()
+        {
             var fakeData = new Dictionary<string, object>() { { "myProperty", -18.4m } };
             var sut = new EqualsConstraint("myProperty", -18.4m);
 
@@ -68,7 +74,8 @@ namespace Rules4Net.Tests.Constraints {
         }
 
         [Fact]
-        public void ShouldEvaluatePrimitiveDate() {
+        public void ShouldEvaluatePrimitiveDate()
+        {
             var fakeData = new Dictionary<string, object>() { { "myProperty", new DateTime(2016, 12, 21) } };
             var sut = new EqualsConstraint("myProperty", new DateTime(2016, 12, 21));
 
@@ -77,7 +84,8 @@ namespace Rules4Net.Tests.Constraints {
         }
 
         [Fact]
-        public void ShouldEvaluatePrimitiveChar() {
+        public void ShouldEvaluatePrimitiveChar()
+        {
             var fakeData = new Dictionary<string, object>() { { "myProperty", 'C' } };
             var sut = new EqualsConstraint("myProperty", 'C');
 
@@ -86,7 +94,8 @@ namespace Rules4Net.Tests.Constraints {
         }
 
         [Fact]
-        public void ShouldEvaluatePrimitiveString() {
+        public void ShouldEvaluatePrimitiveString()
+        {
             var fakeData = new Dictionary<string, object>() { { "myProperty", "John Doe" } };
             var sut = new EqualsConstraint("myProperty", "John Doe");
 
@@ -95,7 +104,8 @@ namespace Rules4Net.Tests.Constraints {
         }
 
         [Fact]
-        public void ShouldEvaluateByValueComplexTypeWithEqualsOverrided() {            
+        public void ShouldEvaluateByValueComplexTypeWithEqualsOverrided()
+        {
             var fakeData = new Dictionary<string, object>() { { "myProperty", new Money(12.3m, Currency.DOLAR) } };
 
             var sut = new EqualsConstraint("myProperty", new Money(12.3m, Currency.REAL));
@@ -106,21 +116,32 @@ namespace Rules4Net.Tests.Constraints {
         }
 
         [Fact]
-        public void ShouldEvaluateByReferenceComplexTypeWithoutEqualsOverrided() {
+        public void ShouldEvaluateByReferenceComplexTypeWithoutEqualsOverrided()
+        {
             var aComplexTypeWithNoEquals = new DummyClass(21);
             var fakeData = new Dictionary<string, object>() { { "myProperty", aComplexTypeWithNoEquals } };
 
-            var sut = new EqualsConstraint("myProperty", new DummyClass(21));            
+            var sut = new EqualsConstraint("myProperty", new DummyClass(21));
             Assert.False(sut.Evaluate(fakeData));
 
             sut = new EqualsConstraint("myProperty", aComplexTypeWithNoEquals);
             Assert.True(sut.Evaluate(fakeData));
         }
-    } //class
 
-    public class DummyClass {
+        [Fact]
+        public void ShouldNotBePossibleEvaluateRuleWithEqualsConstraintAndMissingProperty()
+        {
+            var constraint = new EqualsConstraint("Name", "John");
+            var result = constraint.Evaluate(ObjectHelper.ToDictionary(new { }));
+            Assert.False(result);
+        }
+    }
+
+    public class DummyClass
+    {
         public int Value { get; set; }
-        public DummyClass(int value) {
+        public DummyClass(int value)
+        {
             this.Value = value;
         }
     }
