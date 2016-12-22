@@ -60,7 +60,9 @@
   <ItemGroup>
     <Compile Include="Constraints\ContainsConstraintTests.cs" />
     <Compile Include="Constraints\ExpressionConstraintTests.cs" />
+    <Compile Include="Constraints\LessThanConstraintTests.cs" />
     <Compile Include="Constraints\IsNotNullConstraintTests.cs" />
+    <Compile Include="Constraints\GreaterThanConstraintTests.cs" />
     <Compile Include="Constraints\IsNullConstraintTests.cs" />
     <Compile Include="Constraints\NotContainsConstraintTests.cs" />
     <Compile Include="Constraints\NotEqualsConstraintTests.cs" />
