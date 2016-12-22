@@ -42,5 +42,17 @@ namespace Rules4Net.Tests.Constraints
 
             Assert.Equal(0, rules.Count());
         }
+
+        [Fact]
+        public void ShouldNotBePossibleEvaluateRuleWithContainsConstraintAndNotNullValue()
+        {
+            var data = new Dictionary<string, object>();
+            data["Name"] = null;
+
+            var contains = new ContainsConstraint("Name", "John");
+            var result = contains.Evaluate(data);
+
+            Assert.False(result);
+        }
     }
 }
