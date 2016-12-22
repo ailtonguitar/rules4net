@@ -8,15 +8,15 @@ using System.Text;
 using Xunit;
 
 namespace Rules4Net.Tests.Constraints
-{    
-    public class StartsWithConstraintTests : TestBase
+{
+    public class EndssWithConstraintTests : TestBase
     {
         [Fact]
-        public void ShouldBePossibleEvaluateRuleWithStartsWithConstraint()
+        public void ShouldBePossibleEvaluateRuleWithEndssWithConstraint()
         {
             var rule = new Rule();
             var filter = rule.AddAndFilter();
-            filter.Add(new StartsWithConstraint("Name", "John"));
+            filter.Add(new EndsWithConstraint("Name", "Doe"));
 
             this.AddRule(rule);
 
@@ -29,30 +29,39 @@ namespace Rules4Net.Tests.Constraints
         }
 
         [Fact]
-        public void ShouldNotBePossibleEvaluateRuleWithStartsWithConstraintAndOtherStartSubstring()
+        public void ShouldNotBePossibleEvaluateRuleWithEndsWithConstraintAndOtherEndSubstring()
         {
             var rule = new Rule();
             var filter = rule.AddAndFilter();
-            filter.Add(new StartsWithConstraint("Name", "John"));
+            filter.Add(new EndsWithConstraint("Name", "John"));
 
             this.AddRule(rule);
 
             var rules = this.Engine.Evaluate(new
             {
-                Name = "ohn"
+                Name = "Penelope"
             });
 
             Assert.Equal(0, rules.Count());
         }
 
         [Fact]
-        public void ShouldNotBePossibleEvaluateRuleWithStartsWithConstraintAndNullValue()
+        public void ShouldNotBePossibleEvaluateRuleWithEndsWithConstraintAndNullValue()
         {
-            var constraint = new StartsWithConstraint("Name", "John");
+            var constraint = new EndsWithConstraint("Name", "John");
             var result = constraint.Evaluate(ObjectHelper.ToDictionary(new
             {
                 Name = (string)null
             }));
+
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void ShouldNotBePossibleEvaluateRuleWithEndsWithConstraintAndMissingProperty()
+        {
+            var constraint = new EndsWithConstraint("Name", "John");
+            var result = constraint.Evaluate(ObjectHelper.ToDictionary(new { }));
 
             Assert.False(result);
         }

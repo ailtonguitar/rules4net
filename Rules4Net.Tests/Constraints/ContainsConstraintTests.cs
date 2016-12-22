@@ -100,6 +100,7 @@ namespace Rules4Net.Tests.Constraints {
             var sut = new ContainsConstraint("myProperty", new Money(10.0m, Currency.REAL));
             Assert.True(sut.Evaluate(data));
         }
+
         #endregion
-    } //class
+    }
 }

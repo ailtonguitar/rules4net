@@ -1,5 +1,6 @@
 ﻿using Rules4Net.Data;
 using Rules4Net.Data.Constraints;
+using Rules4Net.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,15 @@ namespace Rules4Net.Tests.Constraints
             var rules = this.Engine.Evaluate(new { });
 
             Assert.Equal(1, rules.Count());
+        }
+
+        [Fact]
+        public void ShouldBeReturnedTrueWhenEvaluateIsNullConstraintAndPropertyNotExists()
+        {
+            var data = ObjectHelper.ToDictionary(new{});
+            var constraint = new IsNullConstraint("Name");
+            var result = constraint.Evaluate(data);
+            Assert.True(result);
         }
 
     }
