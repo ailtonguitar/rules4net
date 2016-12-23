@@ -8,28 +8,35 @@ using System.Reflection;
 using Rules4Net.Helpers;
 using Rules4Net.Listener;
 using Rules4Net.Listener.Repository;
+using Rules4Net.Strategies;
 
 namespace Rules4Net.Engine
 {
     public class RuleEngine : IRuleEngine
     {
         private IRuleStore _pool;
+        private IRuleEvaluationStrategy _strategy { get; set; }
 
-        public RuleEngine(IRuleStore pool)
+        public RuleEngine(IRuleStore pool) : this(pool, new SimpleRuleEvaluationStrategy())
+        {
+        }
+
+        public RuleEngine(IRuleStore pool, IRuleEvaluationStrategy strategy)
         {
             _pool = pool;
+            _strategy = strategy;
         }
 
         public IEnumerable<IRule> Evaluate(IDictionary<string, object> data)
         {
-            return _pool.Get().Where(r => r.Filters.All(f => f.Evaluate(data)));
+            var rules = _pool.Get();
+            return _strategy.Evaluate(rules, data);
         }
 
         public IEnumerable<IRule> Evaluate(object data)
         {
             return this.Evaluate(ObjectHelper.ToDictionary(data));
         }
-
 
         public IEnumerable<IRule> EvaluateAndFire(object data)
         {
