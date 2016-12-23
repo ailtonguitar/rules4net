@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Rules4Net.Extensions;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +23,18 @@ namespace Rules4Net.Data.Constraints
             if (!data.ContainsKey(_property) || data[_property] == null || string.IsNullOrEmpty(data[_property].ToString()))
                 return false;
 
-            return data[_property].ToString().ToLower().Contains(this._value.ToString().ToLower());
+            if (this._value == null)
+                return false;
+
+            var baseData = data[_property];
+            if (baseData is string) {
+                return baseData.ToString().ToLowerInvariant().Contains(this._value.ToString().ToLowerInvariant());
+            } else if (baseData is IEnumerable) {
+                var enumerable = baseData as IEnumerable;
+                return enumerable.Contains(this._value);                
+            } else {
+                return false;
+            }
         }
-    }
+    } //class
 }
