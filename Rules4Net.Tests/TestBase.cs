@@ -12,7 +12,7 @@ namespace Rules4Net.Tests
 {
     public class TestBase
     {
-        private IRuleStore Pool { get; set; }
+        protected IRuleStore Pool { get; set; }
         protected IRuleEngine Engine { get; set; }
 
         public TestBase() {

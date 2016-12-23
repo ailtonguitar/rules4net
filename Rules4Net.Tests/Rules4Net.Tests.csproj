@@ -75,6 +75,7 @@
     <Compile Include="Listeners\ExpressionListenerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RuleEngineTests.cs" />
+    <Compile Include="Strategies\RuleEvaluationStrategiesTests.cs" />
     <Compile Include="TestBase.cs" />
     <Compile Include="TestObjects\Financial\Currency.cs" />
     <Compile Include="TestObjects\Financial\Money.cs" />
