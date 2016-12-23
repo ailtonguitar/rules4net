@@ -37,15 +37,4 @@ namespace Rules4Net.Tests
             this.Pool.Clear();
         }
     }
-
-    [Rule("fake.rule")]
-    public class FakeRuleListener : IRuleListener
-    {
-        public void Handle(object data)
-        {
-            var dic = (IDictionary<string, object>)data;
-            dic["Changed"] = true;
-        }
-    }
-
 }

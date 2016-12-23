@@ -49,8 +49,7 @@ namespace Rules4Net.Engine
         {
             foreach (var rule in rules)
             {
-                var listener = ListenerRepository.GetListener(rule.Name);
-                if (listener != null)
+                foreach (var listener in rule.Listeners)
                     listener.Handle(data);
             }
         }

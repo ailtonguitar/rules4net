@@ -1,4 +1,5 @@
 ﻿using Rules4Net.Data.Filters;
+using Rules4Net.Listener;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,18 @@ namespace Rules4Net.Data
         public Rule()
         {
             this.Filters = new List<Filter>();
+            this.Listeners = new List<IRuleListener>();
         }
 
         public string Name { get; set; }
-        public IList<Filter> Filters { get; set; }
+        
+        public IList<Filter> Filters { get; private set; }
+        public IList<IRuleListener> Listeners { get; private set; }
+
+        public void AddListener(IRuleListener listener)
+        {
+            this.Listeners.Add(listener);
+        }
 
         public Filter Add(Filter filter)
         {

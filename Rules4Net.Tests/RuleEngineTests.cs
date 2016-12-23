@@ -3,6 +3,7 @@ using Rules4Net.Data.Constraints;
 using Rules4Net.Engine;
 using Rules4Net.Listener.Repository;
 using Rules4Net.Repository;
+using Rules4Net.Tests.TestObjects.Listeners;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,9 @@ using System.Text;
 using Xunit;
 
 namespace Rules4Net.Tests
-{    
+{
     public class RuleEngineTests : TestBase
-    {        
+    {
         [Fact]
         public void ShouldBePossibleEvaluateRule()
         {
@@ -86,10 +87,10 @@ namespace Rules4Net.Tests
         [Fact]
         public void ShouldBePossibleEvaluateRuleAndFireListener()
         {
-            ListenerRepository.Register(typeof(RuleEngineTests));
-
             var rule = new Rule();
             rule.Name = "fake.rule";
+            rule.AddListener(new FakeRuleListener());
+
             var filter = rule.AddAndFilter();
             filter.Add(new EqualsConstraint("Name", "John Doe"));
 
@@ -101,6 +102,6 @@ namespace Rules4Net.Tests
             this.Engine.EvaluateAndFire(data);
 
             Assert.Equal(true, data["Changed"]);
-        }        
+        }
     }
 }

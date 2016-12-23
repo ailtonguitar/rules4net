@@ -68,6 +68,7 @@
     <Compile Include="Extensions\ConcurrentBagExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Helpers\ObjectHelper.cs" />
+    <Compile Include="Listener\ExpressionListener.cs" />
     <Compile Include="Listener\IRuleListener.cs" />
     <Compile Include="Listener\RuleAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
