@@ -69,6 +69,7 @@
     <Compile Include="Constraints\EqualsConstraintTests.cs" />
     <Compile Include="Constraints\EndsWithConstraintTests.cs" />
     <Compile Include="Constraints\StartsWithConstraintTests.cs" />
+    <Compile Include="LanguageContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RuleEngineTests.cs" />
     <Compile Include="TestBase.cs" />

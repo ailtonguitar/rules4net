@@ -65,7 +65,8 @@
     <Compile Include="Data\Rule.cs" />
     <Compile Include="Engine\RuleEngine.cs" />
     <Compile Include="Engine\IRuleEngine.cs" />
-    <Compile Include="Helpers\ConcurrentBagHelper.cs" />
+    <Compile Include="Extensions\ConcurrentBagExtensions.cs" />
+    <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Helpers\ObjectHelper.cs" />
     <Compile Include="Listener\IRuleListener.cs" />
     <Compile Include="Listener\RuleAttribute.cs" />
