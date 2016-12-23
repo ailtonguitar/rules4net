@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Rules4Net.Data
 {
-    public abstract class Filter
+    public abstract class Filter : IConstraint
     {
         protected Filter() {            
             this.Constraints = new List<IConstraint>();
