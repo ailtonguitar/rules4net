@@ -39,7 +39,7 @@ namespace Rules4Net.Data
 
         public IList<IRuleListener> Listeners
         {
-            get { return this.Listeners; }
+            get { return this._listeners; }
         }
 
         public void AddListener<T>(Action<T> action)
