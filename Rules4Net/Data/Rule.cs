@@ -20,11 +20,6 @@ namespace Rules4Net.Data
         public string Name { get; set; }
         public IList<Filter> Filters { get; private set; }
 
-        public void AddListener(IRuleListener listener)
-        {
-            this._listeners.Add(listener);
-        }
-
         public Filter Add(Filter filter)
         {
             filter.Rule = this;
@@ -50,6 +45,11 @@ namespace Rules4Net.Data
         public void AddListener<T>(Action<T> action)
         {
             this._listeners.Add(new ExpressionListener<T>(action));
+        }
+
+        public void AddListener(IRuleListener listener)
+        {
+            this._listeners.Add(listener);
         }
     }
 }
