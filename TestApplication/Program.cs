@@ -2,6 +2,7 @@
 using Rules4Net.Data.Constraints;
 using Rules4Net.Data.Filters;
 using Rules4Net.Engine;
+using Rules4Net.Logging;
 using Rules4Net.Repository;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,9 @@ using System.Threading.Tasks;
 
 namespace TestApplication {
     class Program {
-        static void Main(string[] args) {
+        static void Main(string[] args) {            
+            LogProvider.SetCurrentLogProvider(new ColoredConsoleLogProvider());            
+
             Rule rule1 = new Rule();
             rule1.Add(new AndFilter(new List<IConstraint> {
                 new EqualsConstraint("name", "Joao Paulo")

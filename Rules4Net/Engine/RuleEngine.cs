@@ -9,11 +9,13 @@ using Rules4Net.Helpers;
 using Rules4Net.Listener;
 using Rules4Net.Listener.Repository;
 using Rules4Net.Strategies;
+using Rules4Net.Logging;
 
 namespace Rules4Net.Engine
 {
     public class RuleEngine : IRuleEngine
     {
+        private static readonly ILog Logger = LogProvider.For<RuleEngine>();
         private IRuleStore _pool;
         private IRuleEvaluationStrategy _strategy { get; set; }
 
@@ -30,7 +32,9 @@ namespace Rules4Net.Engine
         public IEnumerable<IRule> Evaluate(IDictionary<string, object> data)
         {
             var rules = _pool.Get();
-            return _strategy.Evaluate(rules, data);
+            var matchRules = _strategy.Evaluate(rules, data);
+            Logger.DebugFormat("{0} rule(s) matched the criteria", rules.Count());
+            return matchRules;
         }
 
         public IEnumerable<IRule> Evaluate(object data)
@@ -56,9 +60,11 @@ namespace Rules4Net.Engine
         {
             foreach (var rule in rules)
             {
-                foreach (var listener in rule.Listeners)
+                foreach (var listener in rule.Listeners) {
+                    Logger.Debug("Triggering listener.");
                     listener.Handle(data);
+                }
             }
         }
-    }
+    } //class
 }
