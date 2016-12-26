@@ -12,8 +12,8 @@ using System.Threading.Tasks;
 
 namespace TestApplication {
     class Program {
-        static void Main(string[] args) {
-            LogProvider.SetCurrentLogProvider(new ColoredConsoleLogProvider());
+        static void Main(string[] args) {            
+            LogProvider.SetCurrentLogProvider(new ColoredConsoleLogProvider());            
 
             Rule rule1 = new Rule();
             rule1.Add(new AndFilter(new List<IConstraint> {
