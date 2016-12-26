@@ -31,10 +31,7 @@ namespace Rules4Net.Repository {
 
         public void Clear()
         {
-            IRule result = null;
-
-            while (!this._rules.IsEmpty)
-                this._rules.TryTake(out result);
+            this._rules.Clear();
         }
     }
 }

@@ -12,18 +12,13 @@ namespace Rules4Net.Data
         public Rule()
         {
             this.Filters = new List<Filter>();
-            this.Listeners = new List<IRuleListener>();
+            this._listeners = new List<IRuleListener>();
         }
+
+        private IList<IRuleListener> _listeners;
 
         public string Name { get; set; }
-        
         public IList<Filter> Filters { get; private set; }
-        public IList<IRuleListener> Listeners { get; private set; }
-
-        public void AddListener(IRuleListener listener)
-        {
-            this.Listeners.Add(listener);
-        }
 
         public Filter Add(Filter filter)
         {
@@ -40,6 +35,21 @@ namespace Rules4Net.Data
         public Filter AddOrFilter()
         {
             return this.Add(new OrFilter(this));
+        }
+
+        public IList<IRuleListener> Listeners
+        {
+            get { return this._listeners; }
+        }
+
+        public void AddListener<T>(Action<T> action)
+        {
+            this._listeners.Add(new ExpressionListener<T>(action));
+        }
+
+        public void AddListener(IRuleListener listener)
+        {
+            this._listeners.Add(listener);
         }
     }
 }

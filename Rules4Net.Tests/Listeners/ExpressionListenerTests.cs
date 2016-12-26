@@ -17,10 +17,10 @@ namespace Rules4Net.Tests.Listeners
             var rule = new Rule();
             rule.Name = "fake.rule";
 
-            rule.AddListener(new ExpressionListener<IDictionary<string, object>>((o) =>
+            rule.AddListener<IDictionary<string, object>>((o) =>
             {
                 o["Email"] = "fake@fake.com";
-            }));
+            });
 
             var filter = rule.AddAndFilter();
             filter.Add(new EqualsConstraint("Name", "John Doe"));

@@ -11,6 +11,8 @@ namespace Rules4Net.Data
         string Name { get; set; }
         IList<Filter> Filters { get; }
         IList<IRuleListener> Listeners { get; }
+        void AddListener(IRuleListener listener);
+        void AddListener<T>(Action<T> action);
         Filter Add(Filter filter);
         Filter AddAndFilter();
         Filter AddOrFilter();
