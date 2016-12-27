@@ -49,6 +49,7 @@
     <Compile Include="Data\Constraints\EqualsConstraint.cs" />
     <Compile Include="Data\Constraints\ExpressionConstraint.cs" />
     <Compile Include="Data\Constraints\GreaterOrEqualConstraint.cs" />
+    <Compile Include="Data\Constraints\IsTodayConstraint.cs" />
     <Compile Include="Data\Constraints\LessOrEqualConstraint.cs" />
     <Compile Include="Data\Constraints\LessThanConstraint.cs" />
     <Compile Include="Data\Constraints\GreaterThanConstraint.cs" />
