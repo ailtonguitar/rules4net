@@ -36,5 +36,15 @@ namespace Rules4Net.Tests.Constraints
             var result = constraint.Evaluate(ObjectHelper.ToDictionary(data));
             Assert.False(result);
         }
+
+
+        [Fact]
+        public void ShouldNotBePossibleEvaluateRuleWithIsTodayConstraintWhenPropertyIsMissing()
+        {
+            var data = new { };
+            var constraint = new IsTodayConstraint("Birthday");
+            var result = constraint.Evaluate(ObjectHelper.ToDictionary(data));
+            Assert.False(result);
+        }
     }
 }

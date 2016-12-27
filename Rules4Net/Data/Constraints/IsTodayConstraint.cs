@@ -20,7 +20,11 @@ namespace Rules4Net.Data.Constraints
                 return false;
 
             var value = (DateTime)data[_property];
-            return value.Date.Equals(DateTime.Today);
+
+            if (value.Kind != DateTimeKind.Utc)
+                value = value.ToUniversalTime();
+
+            return value.Date.Equals(DateTime.UtcNow.Date);
         }
     }
 }

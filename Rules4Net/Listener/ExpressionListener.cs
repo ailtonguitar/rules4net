@@ -5,14 +5,14 @@ using System.Text;
 
 namespace Rules4Net.Listener
 {
-    public class ExpressionListener : ExpressionListener<object>
+    internal class ExpressionListener : ExpressionListener<object>
     {
         public ExpressionListener(Action<object> action) : base(action)
         {
         }
     }
 
-    public class ExpressionListener<T> : IRuleListener
+    internal class ExpressionListener<T> : IRuleListener
     {
         private Action<T> _action;
 
