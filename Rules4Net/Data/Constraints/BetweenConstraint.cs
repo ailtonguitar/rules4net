@@ -12,6 +12,18 @@ namespace Rules4Net.Data.Constraints
 
         public BetweenConstraint(string property, object lower, object upper)
         {
+            if (string.IsNullOrEmpty(property))
+                throw new ArgumentNullException("property name");
+
+            if (lower == null)
+                throw new ArgumentNullException("lowerBound");
+
+            if (upper == null)
+                throw new ArgumentNullException("upperBound");
+
+            if (lower.GetType() != upper.GetType())
+                throw new ArgumentException("The lower and upper bounds have different types.");
+
             this.lowerBound = new GreaterOrEqualConstraint(property, lower);
             this.upperBound = new LessOrEqualConstraint(property, upper);
         }

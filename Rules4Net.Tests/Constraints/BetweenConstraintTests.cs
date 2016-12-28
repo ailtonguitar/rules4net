@@ -39,5 +39,53 @@ namespace Rules4Net.Tests.Constraints
             var constraint = new BetweenConstraint("Age", 12, 18);
             Assert.False(constraint.Evaluate(data));
         }
+
+        [Fact]
+        public void ShouldNotBePossibleEvaluateRuleWithBetweenConstraintAndPropertyMissing()
+        {
+            var data = ObjectHelper.ToDictionary(new { });
+            var constraint = new BetweenConstraint("Age", 12, 18);
+            Assert.False(constraint.Evaluate(data));
+        }
+
+        [Fact]
+        public void ShouldNotBePossibleEvaluateRuleWithBetweenConstraintWhenPropertyIsNull()
+        {
+            var data = ObjectHelper.ToDictionary(new { Age = (int?)null });
+            var constraint = new BetweenConstraint("Age", 12, 18);
+            Assert.False(constraint.Evaluate(data));
+        }
+
+        [Fact]
+        public void ShouldNotBePossibleEvaluateRuleWithBetweenConstraintWhenPropertyHasOtherType()
+        {
+            var data = ObjectHelper.ToDictionary(new { Age = "Older" });
+            var constraint = new BetweenConstraint("Age", 12, 18);
+            Assert.False(constraint.Evaluate(data));
+        }
+
+        [Fact]
+        public void ShouldNotBePossibleCreateBetweenConstraintWithDifferentTypes()
+        {
+            Assert.Throws<ArgumentException>(() => new BetweenConstraint("Age", 12, DateTime.UtcNow));
+        }
+
+        [Fact]
+        public void ShouldNotBePossibleCreateBetweenConstraintWithNullPropertyName()
+        {
+            Assert.Throws<ArgumentNullException>(() => new BetweenConstraint(null, DateTime.MinValue, DateTime.UtcNow));
+        }
+
+        [Fact]
+        public void ShouldNotBePossibleCreateBetweenConstraintWithNullLowerBound()
+        {
+            Assert.Throws<ArgumentNullException>(() => new BetweenConstraint("Age", null, DateTime.UtcNow));
+        }
+
+        [Fact]
+        public void ShouldNotBePossibleCreateBetweenConstraintWithNullUpperBound()
+        {
+            Assert.Throws<ArgumentNullException>(() => new BetweenConstraint("Age", DateTime.MinValue, null));
+        }
     }
 }
