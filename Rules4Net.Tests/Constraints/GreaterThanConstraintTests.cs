@@ -38,6 +38,15 @@ namespace Rules4Net.Tests.Constraints
         }
 
         [Fact]
+        public void ShouldBeReturnedFalseWhenEvaluateGreaterThanConstraintAndValueHasAnotherType()
+        {
+            var data = ObjectHelper.ToDictionary(new { Age = "Older" });
+            var constraint = new GreaterThanConstraint("Age", 18);
+            var result = constraint.Evaluate(data);
+            Assert.False(result);
+        }
+
+        [Fact]
         public void ShouldBeReturnedFalseWhenEvaluateGreaterThanConstraintAndValueIsLessThanConstraint()
         {
             var data = ObjectHelper.ToDictionary(new { Age = 17 });

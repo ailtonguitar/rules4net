@@ -23,6 +23,9 @@ namespace Rules4Net.Data.Constraints
             if (value == null)
                 return false;
 
+            if (value.GetType() != this._value.GetType())
+                return false;
+
             var comparable = value as IComparable;
 
             return comparable.CompareTo(this._value) > 0;

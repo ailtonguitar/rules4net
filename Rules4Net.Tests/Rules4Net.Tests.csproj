@@ -58,9 +58,12 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Constraints\BetweenConstraintTests.cs" />
     <Compile Include="Constraints\ContainsConstraintTests.cs" />
     <Compile Include="Constraints\ExpressionConstraintTests.cs" />
+    <Compile Include="Constraints\GreaterOrEqualConstraintTests.cs" />
     <Compile Include="Constraints\IsTodayConstraintTests.cs" />
+    <Compile Include="Constraints\LessOrEqualConstraintTests.cs" />
     <Compile Include="Constraints\LessThanConstraintTests.cs" />
     <Compile Include="Constraints\IsNotNullConstraintTests.cs" />
     <Compile Include="Constraints\GreaterThanConstraintTests.cs" />

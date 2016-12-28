@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Constraints\BetweenConstraint.cs" />
     <Compile Include="Data\Constraints\ContainsConstraint.cs" />
     <Compile Include="Data\Constraints\EndsWithConstraint.cs" />
     <Compile Include="Data\Constraints\EqualsConstraint.cs" />
